@@ -1,7 +1,7 @@
 import { Model } from 'mongoose';
 import { IDatabaseInterface } from './database.interface';
 
-export class DatabaseRepository<T> implements IDatabaseInterface<T> {
+export abstract class DatabaseRepository<T> implements IDatabaseInterface<T> {
   constructor(private readonly model: Model<T>) {}
 
   async create(data: T): Promise<T> {

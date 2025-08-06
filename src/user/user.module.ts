@@ -1,7 +1,12 @@
 import { Module } from '@nestjs/common';
 import { UserResolver } from './user.resolver';
+import { UserService } from './user.service';
+import { UserRepository } from './repositories/user.repository';
+import { DatabaseModule } from 'src/shared/database/database.module';
+import { User, UserSchema } from './schemas/user.schema';
 
 @Module({
-  providers: [UserResolver]
+  imports: [DatabaseModule.forFeature([{ name: User.name, schema: UserSchema }])],
+  providers: [UserResolver, UserService, UserRepository],
 })
 export class UserModule {}
