@@ -2,6 +2,34 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input CreateUserInput {
+  email: String!
+  name: String!
+  password: String!
+}
+
+type CreateUserResponse {
+  data: UserGraphQLType!
+  message: String!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): CreateUserResponse!
+}
+
 type Query {
   checkUser: String!
+}
+
+type UserGraphQLType {
+  email: String!
+  id: ID!
+  isActive: UserStatusEnum!
+  name: String!
+}
+
+"""The status of the user [ ACTIVE or INACTIVE ]"""
+enum UserStatusEnum {
+  ACTIVE
+  INACTIVE
 }
