@@ -1,0 +1,53 @@
+class Event{
+    @Prop({required:false})
+    coverImage:string;
+
+    @Prop({required:true})
+    title:string;
+
+    @Prop({required:true})
+    location:string; // Could be address, venue name, or coordinates
+
+    @Prop({required:true})
+    description:string;
+
+    // Event Start Section
+    @Prop({required:true})
+    eventStartDate: Date; // DD/MM/YY format in UI
+
+    @Prop({required:true})
+    eventStartTime: string; // HH:mm format (e.g., "14:30")
+
+    // Event End Section
+    @Prop({required:true})
+    eventEndDate: Date; // DD/MM/YY format in UI
+
+    @Prop({required:true})
+    eventEndTime: string; // HH:mm format (e.g., "18:00")
+
+    // Booking Section
+    @Prop({required:true})
+    bookingOpenDate: Date; // DD/MM/YY format in UI - when bookings open
+
+    @Prop({required:true})
+    bookingCloseDate: Date; // DD/MM/YY format in UI - when bookings close
+
+    // Computed fields for easier querying and validation
+    @Prop()
+    eventStartDateTime: Date; // Combined start date + time for DB queries
+
+    @Prop()
+    eventEndDateTime: Date; // Combined end date + time for DB queries
+
+    // Optional: Maximum attendees for booking management
+    @Prop({required:false})
+    maxAttendees?: number;
+
+    // Optional: Current booking count
+    @Prop({default: 0})
+    currentBookings: number;
+
+    // Optional: Booking status
+    @Prop({default: 'upcoming', enum: ['upcoming', 'open', 'closed', 'completed', 'cancelled']})
+    bookingStatus: string;
+}

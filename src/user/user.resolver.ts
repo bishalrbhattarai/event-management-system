@@ -21,4 +21,5 @@ export class UserResolver {
     const userGraphQLType = convertToGraphQLType(createdUser, UserGraphQLType);
     return new CreateUserResponse(userGraphQLType);
   }
+  
 }
